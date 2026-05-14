@@ -1,0 +1,3828 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="description"
+      content="VICPER SOLUTIONS S.A.S. — Infraestructura Tecnológica y Soporte Empresarial. Soporte TI, Redes, CCTV, Mantenimiento en Colombia."
+    />
+    <meta
+      name="keywords"
+      content="soporte TI Colombia, infraestructura tecnológica, CCTV, redes empresariales, mantenimiento computadores, Santa Marta"
+    />
+    <meta
+      property="og:title"
+      content="VICPER SOLUTIONS S.A.S. — Technology Infrastructure &amp; Support"
+    />
+    <meta
+      property="og:description"
+      content="Infraestructura tecnológica y soporte TI para empresas e instituciones en Colombia."
+    />
+    <title>
+      VICPER SOLUTIONS S.A.S. — Technology Infrastructure &amp; Support
+    </title>
+
+    <!-- MANDATORY: Space Grotesk (headings/UI) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ========================================
+   DESIGN TOKENS
+======================================== */
+      :root {
+        /* Brand colors — extracted from VICPER logo */
+        --navy-950: #080f1c;
+        --navy-900: #0d1829;
+        --navy-800: #152036;
+        --navy-700: #1b2847;
+        --navy-600: #243258;
+        --navy-500: #2d3f6e;
+        --slate-600: #3d4f65;
+        --slate-500: #4e6180;
+        --slate-400: #637898;
+        --silver-500: #8096af;
+        --silver-400: #9bb0c8;
+        --silver-300: #bdc9d8;
+        --silver-200: #d6dee8;
+        --silver-100: #eaeef4;
+        --silver-50: #f3f6fa;
+        --white: #ffffff;
+        --paper: #fafbfd;
+
+        /* Typography — MANDATORY */
+        --font-heading: "Space Grotesk", system-ui, sans-serif;
+        --font-body: "Inter", system-ui, sans-serif;
+
+        /* Layout */
+        --max-w: 1280px;
+        --gutter: clamp(20px, 5vw, 72px);
+        --section-gap: clamp(80px, 10vw, 140px);
+
+        /* UI */
+        --radius-sm: 2px;
+        --radius-md: 6px;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --ease-in: cubic-bezier(0.4, 0, 1, 1);
+        --dur: 240ms;
+
+        /* Shadows */
+        --shadow-sm: 0 1px 3px rgba(8, 15, 28, 0.06),
+          0 1px 2px rgba(8, 15, 28, 0.04);
+        --shadow-md: 0 4px 16px rgba(8, 15, 28, 0.08),
+          0 2px 6px rgba(8, 15, 28, 0.04);
+        --shadow-lg: 0 12px 40px rgba(8, 15, 28, 0.12),
+          0 4px 12px rgba(8, 15, 28, 0.06);
+        --shadow-xl: 0 24px 64px rgba(8, 15, 28, 0.16),
+          0 8px 20px rgba(8, 15, 28, 0.08);
+      }
+
+      /* ========================================
+   RESET & BASE
+======================================== */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--white);
+        color: var(--navy-700);
+        line-height: 1.65;
+        overflow-x: hidden;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      button {
+        cursor: pointer;
+        font-family: inherit;
+        border: none;
+        background: none;
+      }
+      ul {
+        list-style: none;
+      }
+      input,
+      select,
+      textarea {
+        font-family: var(--font-body);
+      }
+
+      /* ========================================
+   LOGO — SPEC COMPLIANT
+   Using exact CSS from requirement
+======================================== */
+      .logo-image {
+        height: 55px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+      @media (max-width: 768px) {
+        .logo-image {
+          height: 42px;
+        }
+      }
+      @media (max-width: 480px) {
+        .logo-image {
+          height: 34px;
+        }
+      }
+      /* Context-specific sizing — AUMENTADO */
+      .logo-image--nav {
+        height: 64px; /* era 46px → +40% más grande */
+        max-width: 320px;
+        flex-shrink: 0;
+      }
+      .logo-image--hero {
+        height: 200px;
+        max-width: 100%;
+        width: auto;
+      }
+      .logo-image--footer {
+        height: 70px;
+        max-width: 320px;
+      }
+      @media (max-width: 768px) {
+        .logo-image--nav {
+          height: 54px;
+          max-width: 260px;
+        }
+        .logo-image--hero {
+          height: 72px;
+        }
+        .logo-image--footer {
+          height: 58px;
+          max-width: 260px;
+        }
+      }
+      @media (max-width: 480px) {
+        .logo-image--nav {
+          height: 44px;
+          max-width: 210px;
+        }
+        .logo-image--hero {
+          height: 56px;
+        }
+        .logo-image--footer {
+          height: 46px;
+          max-width: 210px;
+        }
+      }
+
+      /* ========================================
+   LAYOUT
+======================================== */
+      .container {
+        max-width: var(--max-w);
+        margin-inline: auto;
+        padding-inline: var(--gutter);
+      }
+      .section {
+        padding-block: var(--section-gap);
+      }
+      .section--sm {
+        padding-block: clamp(56px, 7vw, 96px);
+      }
+      .section--dark {
+        background: var(--navy-900);
+      }
+      .section--navy {
+        background: var(--navy-700);
+      }
+      .section--paper {
+        background: var(--paper);
+      }
+      .section--silver {
+        background: var(--silver-50);
+      }
+
+      /* ========================================
+   TYPOGRAPHY SYSTEM — Space Grotesk / Inter
+======================================== */
+      .label {
+        font-family: var(--font-heading);
+        font-size: 10.5px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--silver-500);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .label::before {
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 1.5px;
+        background: var(--silver-300);
+        flex-shrink: 0;
+      }
+      .label--light {
+        color: rgba(255, 255, 255, 0.45);
+      }
+      .label--light::before {
+        background: rgba(255, 255, 255, 0.22);
+      }
+      .label--center {
+        justify-content: center;
+      }
+
+      h1 {
+        font-family: var(--font-heading);
+        font-size: clamp(36px, 5.5vw, 76px);
+        font-weight: 700;
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+        color: var(--navy-900);
+      }
+      h2 {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 4vw, 54px);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+        color: var(--navy-900);
+      }
+      h3 {
+        font-family: var(--font-heading);
+        font-size: clamp(17px, 2vw, 21px);
+        font-weight: 600;
+        letter-spacing: -0.015em;
+        color: var(--navy-900);
+      }
+      h4 {
+        font-family: var(--font-heading);
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+        color: var(--navy-700);
+      }
+      .lead {
+        font-family: var(--font-body);
+        font-size: clamp(15px, 1.6vw, 18.5px);
+        font-weight: 300;
+        line-height: 1.78;
+        color: var(--slate-500);
+      }
+      .body {
+        font-size: 15px;
+        line-height: 1.78;
+        color: var(--slate-500);
+      }
+
+      /* ========================================
+   BUTTONS
+======================================== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        padding: 14px 28px;
+        border-radius: var(--radius-sm);
+        border: 1.5px solid transparent;
+        cursor: pointer;
+        transition: all var(--dur) var(--ease);
+        white-space: nowrap;
+      }
+      .btn svg {
+        width: 15px;
+        height: 15px;
+        flex-shrink: 0;
+        transition: transform var(--dur) var(--ease);
+      }
+      .btn:hover svg {
+        transform: translateX(3px);
+      }
+      .btn--primary {
+        background: var(--navy-700);
+        color: var(--white);
+        border-color: var(--navy-700);
+      }
+      .btn--primary:hover {
+        background: var(--navy-600);
+        border-color: var(--navy-600);
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(13, 24, 41, 0.28);
+      }
+      .btn--ghost {
+        background: transparent;
+        color: var(--navy-700);
+        border-color: var(--silver-200);
+      }
+      .btn--ghost:hover {
+        border-color: var(--navy-700);
+        background: rgba(13, 24, 41, 0.04);
+        transform: translateY(-1px);
+      }
+      .btn--wa {
+        background: #25d366;
+        color: var(--white);
+        border-color: #25d366;
+      }
+      .btn--wa:hover {
+        background: #1db954;
+        border-color: #1db954;
+        transform: translateY(-1px);
+        box-shadow: 0 8px 24px rgba(37, 211, 102, 0.3);
+      }
+      .btn--outline-white {
+        background: transparent;
+        color: rgba(255, 255, 255, 0.88);
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+      .btn--outline-white:hover {
+        border-color: rgba(255, 255, 255, 0.65);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--white);
+      }
+      .btn--lg {
+        padding: 17px 36px;
+        font-size: 14px;
+      }
+      .btn--sm {
+        padding: 10px 20px;
+        font-size: 12px;
+      }
+
+      /* ========================================
+   SCROLL REVEAL
+======================================== */
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
+      }
+      [data-reveal].revealed {
+        opacity: 1;
+        transform: none;
+      }
+      [data-delay="1"] {
+        transition-delay: 0.08s;
+      }
+      [data-delay="2"] {
+        transition-delay: 0.16s;
+      }
+      [data-delay="3"] {
+        transition-delay: 0.24s;
+      }
+      [data-delay="4"] {
+        transition-delay: 0.32s;
+      }
+      [data-delay="5"] {
+        transition-delay: 0.4s;
+      }
+      [data-delay="6"] {
+        transition-delay: 0.48s;
+      }
+
+      /* ========================================
+   NAVBAR
+======================================== */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 900;
+        height: 88px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid transparent;
+        transition: border-color var(--dur), box-shadow var(--dur);
+      }
+      .navbar.scrolled {
+        border-bottom-color: var(--silver-100);
+        box-shadow: var(--shadow-sm);
+      }
+      .navbar-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      /* Logo wrapper ensures no overflow */
+      .navbar-logo {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        padding-block: 8px;
+        max-width: 260px;
+      }
+      .navbar-nav {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+      }
+      .nav-link {
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--slate-500);
+        padding: 8px 12px;
+        border-radius: var(--radius-sm);
+        transition: color var(--dur), background var(--dur);
+        position: relative;
+      }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: 4px;
+        left: 12px;
+        right: 12px;
+        height: 1.5px;
+        background: var(--navy-700);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.22s var(--ease);
+      }
+      .nav-link:hover {
+        color: var(--navy-900);
+      }
+      .nav-link:hover::after {
+        transform: scaleX(1);
+      }
+      .navbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        padding: 8px;
+        border-radius: var(--radius-sm);
+        transition: background var(--dur);
+      }
+      .hamburger:hover {
+        background: var(--silver-50);
+      }
+      .hamburger span {
+        display: block;
+        width: 21px;
+        height: 1.5px;
+        background: var(--navy-700);
+        border-radius: 2px;
+        transition: all 0.3s;
+      }
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+
+      /* Mobile menu */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 850;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(24px);
+        padding: 106px var(--gutter) 40px;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .mobile-menu.open {
+        display: flex;
+      }
+      .mobile-menu .nav-link {
+        font-size: 22px;
+        font-weight: 600;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--silver-100);
+        border-radius: 0;
+      }
+      .mobile-menu .nav-link::after {
+        display: none;
+      }
+      .mobile-menu .btn {
+        margin-top: 22px;
+        justify-content: center;
+      }
+
+      /* ========================================
+   HERO
+======================================== */
+      .hero {
+        min-height: 100vh;
+        display: grid;
+        grid-template-columns: 56% 44%;
+        padding-top: 88px;
+        overflow: hidden;
+      }
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: clamp(60px, 8vw, 120px) clamp(40px, 5vw, 80px);
+        background: var(--white);
+        position: relative;
+      }
+      .hero-content::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--silver-100);
+      }
+      /* Hero logo block — alineado a la izquierda igual que el resto del contenido */
+      .hero-logo-block {
+        margin-bottom: 40px;
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+      }
+      .hero-eyebrow {
+        margin-bottom: 22px;
+      }
+      .hero h1 {
+        margin-bottom: 24px;
+      }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--slate-400);
+        font-weight: 300;
+      }
+      .hero-lead {
+        max-width: 460px;
+        font-size: clamp(15px, 1.5vw, 17.5px);
+        font-weight: 300;
+        line-height: 1.8;
+        color: var(--slate-500);
+        margin-bottom: 40px;
+      }
+      .hero-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+      }
+      .hero-metrics {
+        display: flex;
+        border-top: 1px solid var(--silver-100);
+        padding-top: 36px;
+      }
+      .metric {
+        flex: 1;
+        padding-right: 24px;
+        border-right: 1px solid var(--silver-100);
+      }
+      .metric:last-child {
+        border-right: none;
+        padding-right: 0;
+      }
+      .metric-value {
+        font-family: var(--font-heading);
+        font-size: clamp(28px, 3vw, 40px);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: var(--navy-900);
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .metric-value sup {
+        font-size: 0.5em;
+        color: var(--slate-400);
+        letter-spacing: 0;
+        font-weight: 500;
+      }
+      .metric-label {
+        font-family: var(--font-heading);
+        font-size: 10.5px;
+        font-weight: 500;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--silver-400);
+      }
+
+      /* Hero photo side */
+      .hero-visual {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-visual img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
+        filter: brightness(0.78) saturate(0.75);
+      }
+      .hero-visual-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 30%
+          ),
+          linear-gradient(to top, rgba(8, 15, 28, 0.55) 0%, transparent 50%);
+      }
+      /* Floating badge */
+      .hero-badge {
+        position: absolute;
+        bottom: 36px;
+        left: 32px;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        background: rgba(255, 255, 255, 0.96);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        padding: 16px 20px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-lg);
+      }
+      .badge-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--navy-700);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .badge-icon svg {
+        width: 20px;
+        height: 20px;
+        color: white;
+      }
+      .badge-text {
+      }
+      .badge-text strong {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--navy-900);
+        letter-spacing: -0.01em;
+      }
+      .badge-text span {
+        font-size: 12.5px;
+        color: var(--slate-500);
+      }
+
+      /* ========================================
+   SECTOR TICKER
+======================================== */
+      .ticker-bar {
+        background: var(--navy-950);
+        padding: 16px 0;
+        overflow: hidden;
+      }
+      .ticker-track {
+        display: flex;
+        width: max-content;
+        animation: ticker 28s linear infinite;
+      }
+      .ticker-track:hover {
+        animation-play-state: paused;
+      }
+      @keyframes ticker {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-50%);
+        }
+      }
+      .ticker-item {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 0 32px;
+        border-right: 1px solid rgba(255, 255, 255, 0.08);
+        white-space: nowrap;
+      }
+      .ticker-dot {
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background: var(--silver-400);
+        opacity: 0.5;
+      }
+      .ticker-item span {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.35);
+      }
+
+      /* ========================================
+   ABOUT
+======================================== */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .about-visual {
+        position: relative;
+      }
+      .about-frame {
+        aspect-ratio: 4/5;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-xl);
+      }
+      .about-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.9) saturate(0.8);
+        transition: transform 0.7s var(--ease);
+      }
+      .about-frame:hover img {
+        transform: scale(1.02);
+      }
+      /* Floating stat */
+      .about-stat {
+        position: absolute;
+        bottom: -24px;
+        right: -24px;
+        background: var(--navy-700);
+        padding: 22px 28px;
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-xl);
+        min-width: 170px;
+      }
+      .about-stat-n {
+        font-family: var(--font-heading);
+        font-size: 44px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: var(--white);
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .about-stat-l {
+        font-family: var(--font-heading);
+        font-size: 10.5px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .about-text h2 {
+        margin-bottom: 20px;
+      }
+      .about-text .lead {
+        margin-bottom: 18px;
+        max-width: 480px;
+      }
+      .about-text .body {
+        margin-bottom: 14px;
+      }
+      /* Value pillars */
+      .about-pillars {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 36px;
+      }
+      .pillar {
+        padding: 20px;
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-md);
+        transition: border-color var(--dur), box-shadow var(--dur);
+      }
+      .pillar:hover {
+        border-color: var(--navy-700);
+        box-shadow: var(--shadow-sm);
+      }
+      .pillar-ico {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--silver-50);
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-sm);
+        margin-bottom: 12px;
+        color: var(--navy-700);
+        transition: background var(--dur), color var(--dur);
+      }
+      .pillar:hover .pillar-ico {
+        background: var(--navy-700);
+        color: white;
+        border-color: var(--navy-700);
+      }
+      .pillar-ico svg {
+        width: 16px;
+        height: 16px;
+      }
+      .pillar h4 {
+        font-size: 12.5px;
+        margin-bottom: 4px;
+      }
+      .pillar p {
+        font-size: 12px;
+        color: var(--slate-400);
+        line-height: 1.6;
+      }
+
+      /* ========================================
+   SERVICES
+======================================== */
+      .svc-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: end;
+        margin-bottom: 60px;
+      }
+      .svc-header-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 16px;
+      }
+      .svc-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--silver-100);
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+      .svc-card {
+        background: var(--white);
+        padding: 40px 32px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+        transition: background var(--dur);
+      }
+      .svc-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--navy-700);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.35s var(--ease);
+      }
+      .svc-card:hover::before {
+        transform: scaleX(1);
+      }
+      .svc-card:hover {
+        background: var(--silver-50);
+      }
+      .svc-photo {
+        width: 100%;
+        height: 145px;
+        overflow: hidden;
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--silver-100);
+        margin-bottom: 28px;
+        flex-shrink: 0;
+      }
+      .svc-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.88) saturate(0.65);
+        transition: filter 0.4s, transform 0.5s var(--ease);
+      }
+      .svc-card:hover .svc-photo img {
+        filter: brightness(0.95) saturate(0.82);
+        transform: scale(1.05);
+      }
+      .svc-num {
+        font-family: var(--font-heading);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: var(--silver-300);
+        margin-bottom: 18px;
+        display: block;
+      }
+      .svc-icon {
+        width: 44px;
+        height: 44px;
+        background: var(--navy-700);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        flex-shrink: 0;
+        transition: background var(--dur), transform var(--dur);
+      }
+      .svc-card:hover .svc-icon {
+        background: var(--navy-600);
+        transform: translateY(-2px);
+      }
+      .svc-icon svg {
+        width: 21px;
+        height: 21px;
+        color: white;
+      }
+      .svc-card h3 {
+        font-size: 18px;
+        margin-bottom: 9px;
+      }
+      .svc-card p {
+        font-size: 13.5px;
+        color: var(--slate-500);
+        line-height: 1.72;
+        margin-bottom: 20px;
+        flex: 1;
+      }
+      .svc-features {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        border-top: 1px solid var(--silver-100);
+        padding-top: 16px;
+      }
+      .svc-feat {
+        font-size: 12.5px;
+        color: var(--slate-400);
+        display: flex;
+        align-items: center;
+        gap: 7px;
+      }
+      .svc-feat svg {
+        width: 11px;
+        height: 11px;
+        color: var(--navy-700);
+        flex-shrink: 0;
+      }
+
+      /* ========================================
+   PLANS
+======================================== */
+      .plans-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0;
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+      }
+      .plan {
+        padding: 44px 36px;
+        border-right: 1px solid var(--silver-100);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: background var(--dur);
+      }
+      .plan:last-child {
+        border-right: none;
+      }
+      .plan:hover {
+        background: var(--silver-50);
+      }
+      .plan--featured {
+        background: var(--navy-700);
+      }
+      .plan--featured:hover {
+        background: var(--navy-600);
+      }
+      .plan-accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--silver-100);
+      }
+      .plan--featured .plan-accent {
+        background: var(--silver-300);
+      }
+      .plan:not(.plan--featured):hover .plan-accent {
+        background: var(--navy-700);
+      }
+      .plan-badge {
+        display: inline-block;
+        font-family: var(--font-heading);
+        font-size: 9.5px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--slate-400);
+        border: 1px solid var(--silver-100);
+        border-radius: 100px;
+        padding: 4px 12px;
+        margin-bottom: 22px;
+      }
+      .plan--featured .plan-badge {
+        color: rgba(255, 255, 255, 0.55);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+      .plan-name {
+        font-family: var(--font-heading);
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--navy-900);
+        line-height: 1;
+        margin-bottom: 10px;
+      }
+      .plan--featured .plan-name {
+        color: var(--white);
+      }
+      .plan-desc {
+        font-size: 13.5px;
+        color: var(--slate-400);
+        line-height: 1.65;
+        margin-bottom: 26px;
+        padding-bottom: 26px;
+        border-bottom: 1px solid var(--silver-100);
+      }
+      .plan--featured .plan-desc {
+        color: rgba(255, 255, 255, 0.48);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .plan-price-lbl {
+        font-family: var(--font-heading);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--slate-400);
+        display: block;
+        margin-bottom: 4px;
+      }
+      .plan--featured .plan-price-lbl {
+        color: rgba(255, 255, 255, 0.4);
+      }
+      .plan-price {
+        font-family: var(--font-heading);
+        font-size: 21px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        color: var(--navy-900);
+        margin-bottom: 28px;
+        display: block;
+      }
+      .plan--featured .plan-price {
+        color: var(--white);
+      }
+      .plan-features {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 32px;
+      }
+      .plan-feat {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 13.5px;
+        color: var(--slate-500);
+        line-height: 1.5;
+      }
+      .plan--featured .plan-feat {
+        color: rgba(255, 255, 255, 0.68);
+      }
+      .feat-check {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        background: rgba(8, 15, 28, 0.07);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+      .plan--featured .feat-check {
+        background: rgba(255, 255, 255, 0.13);
+      }
+      .feat-check svg {
+        width: 9px;
+        height: 9px;
+        color: var(--navy-700);
+      }
+      .plan--featured .feat-check svg {
+        color: white;
+      }
+      .plan-feat.dimmed {
+        opacity: 0.28;
+      }
+      .plan-cta {
+        display: block;
+        text-align: center;
+        padding: 13px;
+        font-family: var(--font-heading);
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        border-radius: var(--radius-sm);
+        border: 1.5px solid var(--silver-200);
+        color: var(--navy-700);
+        background: transparent;
+        cursor: pointer;
+        transition: all var(--dur);
+      }
+      .plan-cta:hover {
+        border-color: var(--navy-700);
+        background: rgba(8, 15, 28, 0.04);
+      }
+      .plan--featured .plan-cta {
+        background: rgba(255, 255, 255, 0.12);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.28);
+      }
+      .plan--featured .plan-cta:hover {
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ========================================
+   WHY
+======================================== */
+      .why-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 560px;
+      }
+      .why-left {
+        padding: clamp(60px, 8vw, 100px) clamp(32px, 5vw, 80px);
+        padding-left: max(
+          clamp(32px, 5vw, 80px),
+          calc((100vw - var(--max-w)) / 2 + clamp(32px, 5vw, 80px))
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid rgba(255, 255, 255, 0.07);
+      }
+      .why-left h2 {
+        color: var(--white);
+        margin-bottom: 20px;
+      }
+      .why-right {
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .why-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 40px 32px;
+        display: flex;
+        flex-direction: column;
+        transition: background var(--dur);
+      }
+      .why-card:hover {
+        background: rgba(255, 255, 255, 0.07);
+      }
+      .why-n {
+        font-family: var(--font-heading);
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        color: rgba(255, 255, 255, 0.18);
+        margin-bottom: 24px;
+        display: block;
+      }
+      .why-ico {
+        width: 44px;
+        height: 44px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 18px;
+        transition: background var(--dur);
+      }
+      .why-card:hover .why-ico {
+        background: rgba(255, 255, 255, 0.12);
+      }
+      .why-ico svg {
+        width: 21px;
+        height: 21px;
+        color: rgba(255, 255, 255, 0.85);
+      }
+      .why-card h3 {
+        font-size: 17px;
+        color: var(--white);
+        margin-bottom: 9px;
+      }
+      .why-card p {
+        font-size: 13.5px;
+        color: rgba(255, 255, 255, 0.48);
+        line-height: 1.72;
+      }
+
+      /* ========================================
+   COVERAGE
+======================================== */
+      .cov-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+      }
+      .cov-map {
+        position: relative;
+        aspect-ratio: 4/3;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-xl);
+      }
+      .cov-map img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: brightness(0.45) saturate(0.4);
+      }
+      .cov-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(8, 15, 28, 0.75) 0%,
+          rgba(8, 15, 28, 0.22) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 36px;
+      }
+      .cov-city {
+        font-family: var(--font-heading);
+        font-size: 30px;
+        font-weight: 700;
+        color: var(--white);
+        letter-spacing: -0.02em;
+        margin-bottom: 4px;
+      }
+      .cov-region {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        letter-spacing: 0.5px;
+      }
+      /* Animated ping */
+      .cov-pin {
+        position: absolute;
+        top: 36%;
+        left: 47%;
+        transform: translate(-50%, -50%);
+      }
+      .pin-dot {
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 50%;
+        position: relative;
+        z-index: 1;
+      }
+      .pin-ring {
+        position: absolute;
+        inset: -8px;
+        border: 1.5px solid rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        animation: cov-ping 2.5s ease-in-out infinite;
+      }
+      .pin-ring-2 {
+        position: absolute;
+        inset: -18px;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        animation: cov-ping 2.5s 0.6s ease-in-out infinite;
+      }
+      @keyframes cov-ping {
+        0% {
+          transform: scale(0.65);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(2.2);
+          opacity: 0;
+        }
+      }
+
+      .cov-zones {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-top: 32px;
+      }
+      .cov-zone {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        background: var(--white);
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-sm);
+        transition: border-color var(--dur), box-shadow var(--dur);
+      }
+      .cov-zone:hover {
+        border-color: var(--navy-700);
+        box-shadow: var(--shadow-sm);
+      }
+      .cov-zone-ico {
+        width: 38px;
+        height: 38px;
+        background: var(--navy-700);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .cov-zone-ico svg {
+        width: 16px;
+        height: 16px;
+        color: white;
+      }
+      .cov-zone-text strong {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--navy-900);
+      }
+      .cov-zone-text span {
+        font-size: 12.5px;
+        color: var(--slate-400);
+      }
+
+      /* ========================================
+   CONTACT
+======================================== */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 80px;
+        align-items: start;
+      }
+      .contact-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-bottom: 28px;
+      }
+      .contact-method {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 18px;
+        background: var(--silver-50);
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-sm);
+        transition: all var(--dur);
+        text-decoration: none;
+        color: inherit;
+      }
+      .contact-method:hover {
+        border-color: var(--navy-700);
+        background: var(--white);
+        box-shadow: var(--shadow-sm);
+        transform: translateX(4px);
+      }
+      .contact-ico {
+        width: 40px;
+        height: 40px;
+        background: var(--navy-700);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .contact-ico.green {
+        background: #25d366;
+      }
+      .contact-ico svg {
+        width: 17px;
+        height: 17px;
+        color: white;
+      }
+      .contact-label {
+        font-family: var(--font-heading);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--slate-400);
+        display: block;
+        margin-bottom: 1px;
+      }
+      .contact-value {
+        font-family: var(--font-heading);
+        font-size: 14.5px;
+        font-weight: 600;
+        color: var(--navy-900);
+      }
+      .contact-arrow {
+        margin-left: auto;
+        color: var(--silver-200);
+        transition: all var(--dur);
+      }
+      .contact-method:hover .contact-arrow {
+        color: var(--navy-700);
+        transform: translateX(3px);
+      }
+      .contact-arrow svg {
+        width: 15px;
+        height: 15px;
+      }
+      .contact-trust {
+        background: var(--navy-700);
+        padding: 18px 20px;
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        gap: 13px;
+      }
+      .trust-ico {
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+      .trust-ico svg {
+        width: 17px;
+        height: 17px;
+        color: white;
+      }
+      .trust-text strong {
+        display: block;
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 600;
+        color: white;
+        margin-bottom: 2px;
+      }
+      .trust-text span {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.42);
+      }
+      .quote-form {
+        background: var(--white);
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+      .form-head {
+        background: var(--navy-700);
+        padding: 28px 32px;
+      }
+      .form-head h3 {
+        font-family: var(--font-heading);
+        font-size: 21px;
+        color: white;
+        margin-bottom: 3px;
+      }
+      .form-head p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.42);
+      }
+      .form-body {
+        padding: 28px 32px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        margin-bottom: 14px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 14px;
+      }
+      .form-group label {
+        font-family: var(--font-heading);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--slate-400);
+      }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 11px 13px;
+        border: 1px solid var(--silver-100);
+        border-radius: var(--radius-sm);
+        background: var(--silver-50);
+        font-size: 14px;
+        color: var(--navy-900);
+        transition: all var(--dur);
+      }
+      .form-group input:focus,
+      .form-group select:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--navy-700);
+        background: var(--white);
+        box-shadow: 0 0 0 3px rgba(8, 15, 28, 0.06);
+      }
+      .form-group select option {
+        background: white;
+        color: var(--navy-900);
+      }
+      .form-group textarea {
+        resize: vertical;
+        min-height: 95px;
+      }
+      .form-submit {
+        width: 100%;
+        padding: 14px;
+        background: var(--navy-700);
+        color: white;
+        border: none;
+        border-radius: var(--radius-sm);
+        font-family: var(--font-heading);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.4px;
+        cursor: pointer;
+        transition: all var(--dur);
+        margin-top: 7px;
+      }
+      .form-submit:hover {
+        background: var(--navy-600);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 18px rgba(8, 15, 28, 0.2);
+      }
+      .form-disclaimer {
+        font-size: 11px;
+        color: var(--slate-400);
+        text-align: center;
+        margin-top: 10px;
+      }
+      .form-success {
+        display: none;
+        padding: 44px 32px;
+        text-align: center;
+      }
+      .form-success.show {
+        display: block;
+      }
+      .form-success-icon {
+        font-size: 44px;
+        margin-bottom: 14px;
+      }
+      .form-success h3 {
+        font-family: var(--font-heading);
+        font-size: 22px;
+        color: var(--navy-900);
+        margin-bottom: 7px;
+      }
+      .form-success p {
+        font-size: 14px;
+        color: var(--slate-400);
+      }
+
+      /* ========================================
+   FOOTER
+======================================== */
+      footer {
+        background: var(--navy-950);
+        padding: 72px 0 0;
+      }
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 48px;
+        padding-bottom: 52px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        margin-bottom: 24px;
+      }
+      /* Footer logo wrapper — contains inverted logo perfectly */
+      .footer-logo-wrap {
+        margin-bottom: 18px;
+        display: flex;
+        align-items: flex-start;
+      }
+      .footer-brand p {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.32);
+        line-height: 1.78;
+        max-width: 255px;
+      }
+      .footer-col-title {
+        font-family: var(--font-heading);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 2.5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.2);
+        margin-bottom: 18px;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+      }
+      .footer-links a {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.38);
+        transition: color var(--dur);
+      }
+      .footer-links a:hover {
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding-bottom: 24px;
+      }
+      .footer-copy {
+        font-size: 11.5px;
+        color: rgba(255, 255, 255, 0.18);
+      }
+      .footer-legal {
+        display: flex;
+        gap: 18px;
+      }
+      .footer-legal a {
+        font-size: 11.5px;
+        color: rgba(255, 255, 255, 0.18);
+        transition: color var(--dur);
+      }
+      .footer-legal a:hover {
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* ========================================
+   WHATSAPP FLOAT
+======================================== */
+      .wa-float {
+        position: fixed;
+        bottom: 28px;
+        right: 28px;
+        z-index: 800;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .wa-float-label {
+        background: var(--white);
+        border: 1px solid var(--silver-100);
+        padding: 9px 16px;
+        border-radius: var(--radius-md);
+        font-family: var(--font-heading);
+        font-size: 12.5px;
+        font-weight: 600;
+        color: var(--navy-900);
+        box-shadow: var(--shadow-md);
+        white-space: nowrap;
+        opacity: 0;
+        animation: waLabelIn 0.4s ease 3.5s both;
+      }
+      @keyframes waLabelIn {
+        to {
+          opacity: 1;
+        }
+      }
+      .wa-float-btn {
+        width: 54px;
+        height: 54px;
+        background: #25d366;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 18px rgba(37, 211, 102, 0.38);
+        transition: all var(--dur);
+      }
+      .wa-float-btn:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 26px rgba(37, 211, 102, 0.5);
+      }
+      .wa-float-btn svg {
+        width: 26px;
+        height: 26px;
+        fill: white;
+      }
+
+      /* ========================================
+   RESPONSIVE
+======================================== */
+      @media (max-width: 1100px) {
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+          padding-top: 72px;
+        }
+        .hero-content {
+          padding-inline: var(--gutter);
+          padding-block: clamp(48px, 6vw, 80px);
+        }
+        .hero-content::after {
+          display: none;
+        }
+        .hero-visual {
+          height: 52vw;
+          max-height: 440px;
+        }
+        .hero-badge {
+          display: none;
+        }
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 52px;
+        }
+        .about-visual {
+          max-width: 440px;
+        }
+        .about-stat {
+          bottom: -18px;
+          right: 14px;
+        }
+        .svc-header {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .plans-grid {
+          grid-template-columns: 1fr;
+        }
+        .plan {
+          border-right: none;
+          border-bottom: 1px solid var(--silver-100);
+        }
+        .plan--featured {
+          border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        .plan:last-child {
+          border-bottom: none;
+        }
+        .why-layout {
+          grid-template-columns: 1fr;
+        }
+        .why-left {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .why-right {
+          grid-template-columns: 1fr 1fr;
+        }
+        .cov-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr 1fr;
+          gap: 36px;
+        }
+      }
+      @media (max-width: 768px) {
+        .navbar-nav,
+        .navbar-actions {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+        .svc-grid {
+          grid-template-columns: 1fr;
+        }
+        .why-right {
+          grid-template-columns: 1fr;
+        }
+        .hero-metrics {
+          flex-wrap: wrap;
+          gap: 18px;
+        }
+        .metric {
+          border-right: none;
+          padding-right: 0;
+          min-width: 90px;
+        }
+        .about-pillars {
+          grid-template-columns: 1fr;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .wa-float-label {
+          display: none;
+        }
+      }
+      @media (max-width: 480px) {
+        .hero-actions {
+          flex-direction: column;
+        }
+        .hero-actions .btn {
+          width: 100%;
+          justify-content: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============================================================
+     NAVBAR
+============================================================ -->
+    <header class="navbar" id="navbar" role="banner">
+      <div class="container navbar-inner">
+        <!-- Logo — versión para fondo claro -->
+        <a href="#" class="navbar-logo" aria-label="VICPER SOLUTIONS S.A.S.">
+          <img
+            src="assets/logo-vicper-dark.svg"
+            alt="VICPER SOLUTIONS S.A.S."
+            class="logo-image logo-image--nav"
+          />
+        </a>
+
+        <nav class="navbar-nav" aria-label="Navegación principal">
+          <a href="#inicio" class="nav-link">Inicio</a>
+          <a href="#servicios" class="nav-link">Servicios</a>
+          <a href="#planes" class="nav-link">Planes</a>
+          <a href="#nosotros" class="nav-link">Nosotros</a>
+          <a href="#contacto" class="nav-link">Contacto</a>
+        </nav>
+
+        <div class="navbar-actions">
+          <a
+            href="tel:+573126805260"
+            style="
+              font-family: var(--font-heading);
+              font-size: 13px;
+              font-weight: 500;
+              color: var(--slate-400);
+              display: flex;
+              align-items: center;
+              gap: 5px;
+            "
+          >
+            <svg
+              width="13"
+              height="13"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 010 2.19 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.9.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"
+              />
+            </svg>
+            +57 3126805260
+          </a>
+          <a href="#contacto" class="btn btn--primary btn--sm"
+            >Solicitar Cotización</a
+          >
+        </div>
+
+        <button
+          class="hamburger"
+          id="hamburger"
+          onclick="toggleMenu()"
+          aria-label="Menú"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile menu -->
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <a href="#inicio" class="nav-link" onclick="closeMenu()">Inicio</a>
+      <a href="#servicios" class="nav-link" onclick="closeMenu()">Servicios</a>
+      <a href="#planes" class="nav-link" onclick="closeMenu()">Planes</a>
+      <a href="#nosotros" class="nav-link" onclick="closeMenu()">Nosotros</a>
+      <a href="#contacto" class="nav-link" onclick="closeMenu()">Contacto</a>
+      <a
+        href="#contacto"
+        class="btn btn--primary"
+        onclick="closeMenu()"
+        style="justify-content: center"
+        >Solicitar Cotización</a
+      >
+    </nav>
+
+    <main>
+      <!-- ============================================================
+     HERO
+============================================================ -->
+      <section id="inicio" class="hero" aria-label="Encabezado principal">
+        <div class="hero-content">
+          <!-- Logo — versión para fondo claro -->
+          <div class="hero-logo-block" data-reveal>
+            <img
+              src="assets/logo-vicper-dark.svg"
+              alt="VICPER SOLUTIONS S.A.S. — Technology Infrastructure &amp; Support"
+              class="logo-image logo-image--hero"
+            />
+          </div>
+
+          <div class="hero-eyebrow" data-reveal data-delay="1">
+            <span class="label"
+              >Technology Infrastructure &amp; Support · Colombia</span
+            >
+          </div>
+
+          <h1 data-reveal data-delay="2">
+            Infraestructura TI<br />
+            que <em>sostiene</em><br />
+            lo que más importa
+          </h1>
+
+          <p class="hero-lead" data-reveal data-delay="3">
+            Soporte TI, redes, CCTV, mantenimiento e infraestructura tecnológica
+            para empresas, instituciones y gobierno. Confiabilidad garantizada.
+            Presencia en Santa Marta — cobertura remota en toda Colombia.
+          </p>
+
+          <div class="hero-actions" data-reveal data-delay="4">
+            <a href="#contacto" class="btn btn--primary btn--lg">
+              Solicitar Cotización
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a
+              href="https://wa.me/573126805260?text=Hola%20VICPER%20SOLUTIONS"
+              class="btn btn--wa btn--lg"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="18"
+                height="18"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                />
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+
+          <div class="hero-metrics" data-reveal data-delay="5">
+            
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1400&q=85&auto=format&fit=crop&crop=center"
+            alt="Infraestructura tecnológica empresarial"
+            loading="eager"
+          />
+          <div class="hero-visual-overlay"></div>
+          <div class="hero-badge">
+            <div class="badge-icon">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 12 11 14 15 10" />
+              </svg>
+            </div>
+            <div class="badge-text">
+              <strong>Empresa certificada</strong>
+              <span>Personal técnico verificado</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sector ticker -->
+      <div class="ticker-bar" aria-hidden="true">
+        <div class="ticker-track">
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Empresas</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Hoteles</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Clínicas</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Colegios</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Gobierno</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Oficinas</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Logística</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Retail</span>
+          </div>
+          <!-- duplicate for loop -->
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Empresas</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Hoteles</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Clínicas</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Colegios</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Gobierno</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Oficinas</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Logística</span>
+          </div>
+          <div class="ticker-item">
+            <div class="ticker-dot"></div>
+            <span>Retail</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+     ABOUT
+============================================================ -->
+      <section id="nosotros" class="section" aria-labelledby="about-heading">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-visual" data-reveal>
+              <div class="about-frame">
+                <img
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=85&auto=format&fit=crop&crop=faces,center"
+                  alt="Equipo profesional VICPER SOLUTIONS"
+                  loading="lazy"
+                />
+              </div>
+              <div class="about-stat">
+                <div class="about-stat-n">
+                  5<span
+                    style="font-size: 0.55em; color: rgba(255, 255, 255, 0.38)"
+                    >+</span
+                  >
+                </div>
+                <div class="about-stat-l">Años de experiencia</div>
+              </div>
+            </div>
+            <div class="about-text">
+              <div data-reveal>
+                <span class="label" style="margin-bottom: 18px"
+                  >Sobre Nosotros</span
+                >
+                <h2 id="about-heading" style="margin-bottom: 20px">
+                  Su aliado tecnológico<br />de largo plazo en Colombia
+                </h2>
+              </div>
+              <p class="lead" data-reveal data-delay="1">
+                VICPER SOLUTIONS S.A.S. es una empresa colombiana especializada
+                en infraestructura tecnológica para el sector empresarial e
+                institucional.
+              </p>
+              <p
+                class="body"
+                data-reveal
+                data-delay="1"
+                style="margin-top: 14px"
+              >
+              SOMOS una empresa colombiana especializada en soluciones tecnológicas integrales para empresas de todos los sectores. Nuestra compañía está respaldada por una trayectoria de más de 5 años de experiencia en el sector tecnológico, destacándose por la calidad de sus servicios, 
+              la capacidad de respuesta y el compromiso con la satisfacción total de cada cliente.
+              </p>
+              <div class="about-pillars" data-reveal data-delay="2">
+                <div class="pillar">
+                  <div class="pillar-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polygon
+                        points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                      />
+                    </svg>
+                  </div>
+                  <h4>Respuesta &lt; 2h</h4>
+                  <p>SLA garantizado para incidentes críticos.</p>
+                </div>
+                <div class="pillar">
+                  <div class="pillar-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0110 0v4" />
+                    </svg>
+                  </div>
+                  <h4>Personal certificado</h4>
+                  <p>Técnicos verificados, manejo confidencial.</p>
+                </div>
+                <div class="pillar">
+                  <div class="pillar-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"
+                      />
+                      <rect x="9" y="3" width="6" height="4" rx="1" />
+                      <line x1="9" y1="12" x2="15" y2="12" />
+                      <line x1="9" y1="16" x2="13" y2="16" />
+                    </svg>
+                  </div>
+                  <h4>Procesos documentados</h4>
+                  <p>Informes mensuales, registro completo.</p>
+                </div>
+                <div class="pillar">
+                  <div class="pillar-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <path
+                        d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"
+                      />
+                    </svg>
+                  </div>
+                  <h4>Alcance nacional</h4>
+                  <p>Soporte remoto en toda Colombia.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+     SERVICES
+============================================================ -->
+      <section
+        id="servicios"
+        class="section section--silver"
+        style="
+          border-top: 1px solid var(--silver-100);
+          border-bottom: 1px solid var(--silver-100);
+        "
+        aria-labelledby="svc-heading"
+      >
+        <div class="container">
+          <div class="svc-header">
+            <div data-reveal>
+              <span class="label" style="margin-bottom: 16px"
+                >Nuestros Servicios</span
+              >
+              <h2 id="svc-heading">
+                Cobertura tecnológica<br />integral para su empresa
+              </h2>
+            </div>
+            <div class="svc-header-right" data-reveal data-delay="1">
+              <p class="body" style="max-width: 300px">
+                Un único aliado para todas sus necesidades TI. Diagnóstico
+                gratuito y garantía de satisfacción en cada servicio.
+              </p>
+              <a href="#contacto" class="btn btn--ghost"
+                >Hablar con un especialista</a
+              >
+            </div>
+          </div>
+          <div class="svc-grid" data-reveal>
+            <div class="svc-card">
+              <div class="svc-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=75&auto=format&fit=crop"
+                  alt="Soporte TI"
+                  loading="lazy"
+                />
+              </div>
+              <span class="svc-num">01</span>
+              <div class="svc-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              </div>
+              <h3>Soporte TI</h3>
+              <p>
+                Asistencia técnica presencial y remota con tiempos de respuesta
+                garantizados por contrato para su empresa.
+              </p>
+              <ul class="svc-features">
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Diagnóstico y reparación de equipos
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Mesa de ayuda corporativa
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Gestión de incidentes
+                </li>
+              </ul>
+            </div>
+            <div class="svc-card">
+              <div class="svc-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=75&auto=format&fit=crop"
+                  alt="Mantenimiento"
+                  loading="lazy"
+                />
+              </div>
+              <span class="svc-num">02</span>
+              <div class="svc-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"
+                  />
+                </svg>
+              </div>
+              <h3>Mantenimiento de Equipos</h3>
+              <p>
+                Programas preventivos y correctivos que prolongan la vida útil
+                de sus activos y eliminan fallas imprevistas.
+              </p>
+              <ul class="svc-features">
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Limpieza interna especializada
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Actualización de hardware
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Informes técnicos mensuales
+                </li>
+              </ul>
+            </div>
+            <div class="svc-card">
+              <div class="svc-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?w=600&q=75&auto=format&fit=crop"
+                  alt="Impresoras"
+                  loading="lazy"
+                />
+              </div>
+              <span class="svc-num">03</span>
+              <div class="svc-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="6 9 6 2 18 2 18 9" />
+                  <path
+                    d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"
+                  />
+                  <rect x="6" y="14" width="12" height="8" />
+                </svg>
+              </div>
+              <h3>Impresoras &amp; Periféricos</h3>
+              <p>
+                Servicio técnico para todas las marcas con contratos por
+                impresión y gestión de flota corporativa.
+              </p>
+              <ul class="svc-features">
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >HP, Epson, Canon, Brother, Xerox
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Contratos por impresión (CPI)
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Suministros originales
+                </li>
+              </ul>
+            </div>
+            <div class="svc-card">
+              <div class="svc-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&q=75&auto=format&fit=crop"
+                  alt="CCTV"
+                  loading="lazy"
+                />
+              </div>
+              <span class="svc-num">04</span>
+              <div class="svc-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M23 7l-7 5 7 5V7z" />
+                  <rect x="1" y="5" width="15" height="14" rx="2" />
+                </svg>
+              </div>
+              <h3>CCTV &amp; Seguridad</h3>
+              <p>
+                Diseño, instalación y mantenimiento de videovigilancia
+                profesional para instalaciones de cualquier escala.
+              </p>
+              <ul class="svc-features">
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Cámaras IP 4K / analógicas HD
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >NVR/DVR con respaldo cloud
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Monitoreo remoto 24/7
+                </li>
+              </ul>
+            </div>
+            <div class="svc-card">
+              <div class="svc-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=75&auto=format&fit=crop"
+                  alt="Redes"
+                  loading="lazy"
+                />
+              </div>
+              <span class="svc-num">05</span>
+              <div class="svc-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <rect x="16" y="16" width="6" height="6" rx="1" />
+                  <rect x="2" y="16" width="6" height="6" rx="1" />
+                  <rect x="9" y="2" width="6" height="6" rx="1" />
+                  <path d="M5 16v-4h14v4M12 12V8" />
+                </svg>
+              </div>
+              <h3>Redes &amp; Conectividad</h3>
+              <p>
+                Infraestructura de red corporativa de alto rendimiento: cableado
+                estructurado, WiFi empresarial y seguridad.
+              </p>
+              <ul class="svc-features">
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Cableado Cat6 / Cat6A
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >WiFi corporativo administrado
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >VPN y firewalls
+                </li>
+              </ul>
+            </div>
+            <div class="svc-card">
+              <div class="svc-photo">
+                <img
+                  src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=75&auto=format&fit=crop"
+                  alt="Infraestructura"
+                  loading="lazy"
+                />
+              </div>
+              <span class="svc-num">06</span>
+              <div class="svc-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="16 16 12 12 8 16" />
+                  <line x1="12" y1="12" x2="12" y2="21" />
+                  <path d="M20.39 18.39A5 5 0 0018 9h-1.26A8 8 0 103 16.3" />
+                </svg>
+              </div>
+              <h3>Infraestructura &amp; Nube</h3>
+              <p>
+                Transformación digital, adopción cloud, backup y consultoría TI
+                estratégica para modernizar su organización.
+              </p>
+              <ul class="svc-features">
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Microsoft 365 &amp; Google Workspace
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Backup y recuperación
+                </li>
+                <li class="svc-feat">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Consultoría TI
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+     PLANS
+============================================================ -->
+      <section id="planes" class="section" aria-labelledby="plans-heading">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 56px" data-reveal>
+            <span class="label label--center" style="margin-bottom: 14px"
+              >Planes de Servicio</span
+            >
+            <h2 id="plans-heading" style="margin-bottom: 14px">
+              Elige el plan para tu empresa
+            </h2>
+            <p class="body" style="max-width: 460px; margin-inline: auto">
+              Sin costos ocultos. SLA garantizado, técnicos certificados e
+              informes en todos los planes.
+            </p>
+          </div>
+          <div class="plans-grid" data-reveal data-delay="1">
+            <div class="plan">
+              <div class="plan-accent"></div>
+              <span class="plan-badge">Plan</span>
+              <div class="plan-name">Básico</div>
+              <p class="plan-desc">
+                Para microempresas y emprendimientos que necesitan soporte TI
+                confiable desde el primer día.
+              </p>
+              <span class="plan-price-lbl">Inversión</span>
+              <span class="plan-price">A cotizar</span>
+              <ul class="plan-features">
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  2 visitas presenciales al mes
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Hasta 5 equipos en mantenimiento
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Soporte remoto horario hábil
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Reporte mensual básico
+                </li>
+                <li class="plan-feat dimmed">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  CCTV y gestión de red
+                </li>
+                <li class="plan-feat dimmed">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Soporte 24/7
+                </li>
+              </ul>
+              <a href="#contacto" class="plan-cta">Solicitar cotización</a>
+            </div>
+            <div class="plan plan--featured">
+              <div class="plan-accent"></div>
+              <span class="plan-badge">Más popular</span>
+              <div class="plan-name">Empresarial</div>
+              <p class="plan-desc">
+                La cobertura más completa para PYMEs con respuesta prioritaria y
+                servicio integral garantizado.
+              </p>
+              <span class="plan-price-lbl">Inversión</span>
+              <span class="plan-price">A cotizar</span>
+              <ul class="plan-features">
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Visitas presenciales ilimitadas
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Hasta 20 equipos mantenidos
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Soporte remoto 12/7
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  CCTV y gestión de red
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Impresoras incluidas
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Gerente de cuenta dedicado
+                </li>
+              </ul>
+              <a href="#contacto" class="plan-cta">Solicitar cotización</a>
+            </div>
+            <div class="plan">
+              <div class="plan-accent"></div>
+              <span class="plan-badge">Enterprise</span>
+              <div class="plan-name">Corporativo</div>
+              <p class="plan-desc">
+                Para grandes organizaciones con infraestructuras críticas y SLA
+                exigentes garantizados.
+              </p>
+              <span class="plan-price-lbl">Inversión</span>
+              <span class="plan-price">Propuesta a medida</span>
+              <ul class="plan-features">
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Equipos ilimitados cubiertos
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Soporte 24/7 con SLA contractual
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Técnico asignado en sitio
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  CCTV multi-sede
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Consultoría TI estratégica
+                </li>
+                <li class="plan-feat">
+                  <div class="feat-check">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                  Reporte ejecutivo mensual
+                </li>
+              </ul>
+              <a href="#contacto" class="plan-cta">Solicitar propuesta</a>
+            </div>
+          </div>
+          <p
+            style="
+              text-align: center;
+              margin-top: 20px;
+              font-size: 12px;
+              color: var(--silver-400);
+            "
+          >
+            ✓ Diagnóstico inicial gratuito &nbsp;·&nbsp; ✓ Contratos mensuales o
+            anuales &nbsp;·&nbsp; ✓ Garantía de satisfacción
+          </p>
+        </div>
+      </section>
+
+      <!-- ============================================================
+     WHY CHOOSE US
+============================================================ -->
+      <section
+        id="por-que"
+        class="section--dark"
+        aria-labelledby="why-heading"
+        style="position: relative; overflow: hidden"
+      >
+        <!-- subtle geometric grid texture -->
+        <div
+          style="
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(
+                rgba(255, 255, 255, 0.02) 1px,
+                transparent 1px
+              ),
+              linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.02) 1px,
+                transparent 1px
+              );
+            background-size: 48px 48px;
+            pointer-events: none;
+          "
+        ></div>
+        <div
+          class="why-layout"
+          style="
+            position: relative;
+            max-width: var(--max-w);
+            margin-inline: auto;
+          "
+        >
+          <div class="why-left" data-reveal>
+            <span class="label label--light" style="margin-bottom: 18px"
+              >Por Qué Elegirnos</span
+            >
+            <h2
+              id="why-heading"
+              style="color: var(--white); margin-bottom: 18px"
+            >
+              Diseñados para las exigencias empresariales
+            </h2>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.48);
+                font-size: 16px;
+                line-height: 1.8;
+                font-weight: 300;
+                max-width: 360px;
+              "
+            >
+              Entendemos que el tiempo de inactividad tecnológica tiene un costo
+              real. Nuestros procesos están diseñados para eliminarlo.
+            </p>
+          </div>
+          <div class="why-right">
+            <div class="why-card" data-reveal>
+              <span class="why-n">01</span>
+              <div class="why-ico">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                </svg>
+              </div>
+              <h3>Respuesta &lt; 2h</h3>
+              <p>
+                Incidentes críticos atendidos en menos de 2 horas, garantizado
+                contractualmente.
+              </p>
+            </div>
+            <div class="why-card" data-reveal data-delay="1">
+              <span class="why-n">02</span>
+              <div class="why-ico">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 12 11 14 15 10" />
+                </svg>
+              </div>
+              <h3>Garantía de Servicio</h3>
+              <p>
+                Si el problema regresa, regresamos nosotros. Sin costo
+                adicional.
+              </p>
+            </div>
+            <div class="why-card" data-reveal data-delay="2">
+              <span class="why-n">03</span>
+              <div class="why-ico">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2" />
+                  <polyline points="16 11 17.5 13 21 10" />
+                </svg>
+              </div>
+              <h3>Equipo Certificado</h3>
+              <p>
+                Técnicos con formación verificada y manejo confidencial de su
+                información.
+              </p>
+            </div>
+            <div class="why-card" data-reveal data-delay="3">
+              <span class="why-n">04</span>
+              <div class="why-ico">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="18" y1="20" x2="18" y2="10" />
+                  <line x1="12" y1="20" x2="12" y2="4" />
+                  <line x1="6" y1="20" x2="6" y2="14" />
+                  <line x1="2" y1="20" x2="22" y2="20" />
+                </svg>
+              </div>
+              <h3>Continuidad Operacional</h3>
+              <p>
+                Monitoreo proactivo e informes mensuales para anticipar fallas
+                antes de que ocurran.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+     COVERAGE
+============================================================ -->
+      <section
+        id="cobertura"
+        class="section section--silver"
+        style="border-top: 1px solid var(--silver-100)"
+        aria-labelledby="cov-heading"
+      >
+        <div class="container">
+          <div class="cov-grid">
+            <div data-reveal>
+              <div class="cov-map">
+                <img
+                  src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=900&q=80&auto=format&fit=crop"
+                  alt="Colombia cobertura VICPER SOLUTIONS"
+                  loading="lazy"
+                />
+                <div class="cov-overlay">
+                  <div class="cov-city">Santa Marta</div>
+                  <div class="cov-region">Magdalena · Colombia</div>
+                </div>
+                <div class="cov-pin">
+                  <div class="pin-dot"></div>
+                  <div class="pin-ring"></div>
+                  <div class="pin-ring-2"></div>
+                </div>
+              </div>
+            </div>
+            <div data-reveal data-delay="1">
+              <span class="label" style="margin-bottom: 16px">Cobertura</span>
+              <h2 id="cov-heading" style="margin-bottom: 16px">
+                Sede en Santa Marta.<br />Alcance nacional.
+              </h2>
+              <p class="lead" style="margin-bottom: 32px">
+                Base de operaciones en Santa Marta con soporte remoto para
+                empresas en todo el territorio colombiano.
+              </p>
+              <div class="cov-zones">
+                <div class="cov-zone">
+                  <div class="cov-zone-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div class="cov-zone-text">
+                    <strong>Cobertura Presencial</strong
+                    ><span
+                      >Santa Marta, Barranquilla y Departamento del
+                      Magdalena</span
+                    >
+                  </div>
+                </div>
+                <div class="cov-zone">
+                  <div class="cov-zone-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="2" y1="12" x2="22" y2="12" />
+                      <path
+                        d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"
+                      />
+                    </svg>
+                  </div>
+                  <div class="cov-zone-text">
+                    <strong>Soporte Remoto Nacional</strong
+                    ><span>Asistencia técnica remota para toda Colombia</span>
+                  </div>
+                </div>
+                <div class="cov-zone">
+                  <div class="cov-zone-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="3" y="3" width="18" height="18" rx="1" />
+                      <line x1="3" y1="9" x2="21" y2="9" />
+                      <line x1="3" y1="15" x2="21" y2="15" />
+                      <line x1="9" y1="3" x2="9" y2="21" />
+                    </svg>
+                  </div>
+                  <div class="cov-zone-text">
+                    <strong>Despliegues Multi-sede</strong
+                    ><span
+                      >Proyectos de infraestructura en cualquier ciudad del
+                      país</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+     CONTACT
+============================================================ -->
+      <section
+        id="contacto"
+        class="section"
+        style="border-top: 1px solid var(--silver-100)"
+        aria-labelledby="contact-heading"
+      >
+        <div class="container">
+          <div class="contact-grid">
+            <div>
+              <div data-reveal>
+                <span class="label" style="margin-bottom: 16px"
+                  >Contáctenos</span
+                >
+                <h2 id="contact-heading" style="margin-bottom: 16px">
+                  Hablemos de su<br />proyecto tecnológico
+                </h2>
+                <p class="lead" style="margin-bottom: 32px; max-width: 420px">
+                  Evaluamos su infraestructura y entregamos propuesta
+                  personalizada sin costo. Respondemos en menos de 2 horas
+                  hábiles.
+                </p>
+              </div>
+              <div class="contact-methods" data-reveal data-delay="1">
+                <a
+                  href="https://wa.me/573126805260?text=Hola%20VICPER%20SOLUTIONS"
+                  class="contact-method"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <div class="contact-ico green">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="contact-label">WhatsApp</span
+                    ><span class="contact-value">+57 3126805260</span>
+                  </div>
+                  <div class="contact-arrow">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </div>
+                </a>
+                <a
+                  href="mailto:contacto@vicpersolutions.com.co"
+                  class="contact-method"
+                >
+                  <div class="contact-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                      />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="contact-label">Correo</span
+                    ><span class="contact-value"
+                      >contacto@vicpersolutions.com</span
+                    >
+                  </div>
+                  <div class="contact-arrow">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </div>
+                </a>
+                <a href="tel:+573126805260" class="contact-method">
+                  <div class="contact-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81 19.79 19.79 0 010 2.19 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.9.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="contact-label">Teléfono</span
+                    ><span class="contact-value">+57 312 680 5260</span>
+                  </div>
+                  <div class="contact-arrow">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </div>
+                </a>
+                <div class="contact-method" style="cursor: default">
+                  <div class="contact-ico">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                  </div>
+                  <div>
+                    <span class="contact-label">Ubicación</span
+                    ><span class="contact-value"
+                      >Santa Marta, Magdalena — Colombia</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="contact-trust" data-reveal data-delay="2">
+                <div class="trust-ico">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <polyline points="9 12 11 14 15 10" />
+                  </svg>
+                </div>
+                <div class="trust-text">
+                  <strong>Empresa legalmente constituida en Colombia</strong
+                  ><span
+                    >Contratos formales · Personal certificado · Garantía total
+                    de servicio</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div data-reveal data-delay="1">
+              <div class="quote-form" id="quoteForm">
+                <div class="form-head">
+                  <h3>Solicitar Cotización</h3>
+                  <p>Respondemos en menos de 2 horas hábiles</p>
+                </div>
+                <div class="form-body" id="formBody">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="f-name">Nombre completo *</label>
+                      <input
+                        type="text"
+                        id="f-name"
+                        placeholder="Juan Pérez"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="f-company">Empresa</label>
+                      <input
+                        type="text"
+                        id="f-company"
+                        placeholder="Mi Empresa S.A.S."
+                      />
+                    </div>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="f-phone">Teléfono / WhatsApp *</label>
+                      <input
+                        type="tel"
+                        id="f-phone"
+                        placeholder="+57 300 000 0000"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="f-email">Correo electrónico *</label>
+                      <input
+                        type="email"
+                        id="f-email"
+                        placeholder="juan@empresa.com"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="f-service">Servicio de interés *</label>
+                    <select id="f-service" required>
+                      <option value="" disabled selected>
+                        Seleccione un servicio…
+                      </option>
+                      <option>Soporte TI Empresarial</option>
+                      <option>Mantenimiento de Equipos</option>
+                      <option>Impresoras &amp; Periféricos</option>
+                      <option>CCTV &amp; Seguridad</option>
+                      <option>Redes &amp; Conectividad</option>
+                      <option>Infraestructura &amp; Nube</option>
+                      <option>Plan Empresarial Completo</option>
+                      <option>Consultoría TI</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="f-size">Tamaño de la organización</label>
+                    <select id="f-size">
+                      <option value="" disabled selected>
+                        Número de equipos…
+                      </option>
+                      <option>1–5 equipos (Micro)</option>
+                      <option>6–20 equipos (Pequeña)</option>
+                      <option>21–50 equipos (Mediana)</option>
+                      <option>50+ equipos (Enterprise)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="f-msg">Descripción del proyecto</label>
+                    <textarea
+                      id="f-msg"
+                      placeholder="Cuéntenos sobre su infraestructura actual y qué necesita mejorar o implementar…"
+                    ></textarea>
+                  </div>
+                  <button
+                    type="button"
+                    class="form-submit"
+                    onclick="submitForm()"
+                  >
+                    Enviar solicitud de cotización →
+                  </button>
+                  <p class="form-disclaimer">
+                    Sus datos son confidenciales y no serán compartidos con
+                    terceros.
+                  </p>
+                </div>
+                <div class="form-success" id="formSuccess">
+                  <div class="form-success-icon">✅</div>
+                  <h3>¡Solicitud recibida!</h3>
+                  <p>
+                    Un especialista de VICPER SOLUTIONS se comunicará con usted
+                    en menos de 2 horas hábiles.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================================================
+     FOOTER
+============================================================ -->
+    <footer role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <!-- Logo — versión para fondo oscuro -->
+            <div class="footer-logo-wrap">
+              <img
+                src="assets/logo-vicper-light.svg"
+                alt="VICPER SOLUTIONS S.A.S."
+                class="logo-image logo-image--footer"
+              />
+            </div>
+            <p>
+              Infraestructura tecnológica y soporte TI para empresas e
+              instituciones en Colombia. Confiable, documentado y garantizado.
+            </p>
+          </div>
+          <div>
+            <div class="footer-col-title">Servicios</div>
+            <ul class="footer-links">
+              <li><a href="#servicios">Soporte TI</a></li>
+              <li><a href="#servicios">Mantenimiento</a></li>
+              <li><a href="#servicios">Impresoras</a></li>
+              <li><a href="#servicios">CCTV &amp; Seguridad</a></li>
+              <li><a href="#servicios">Redes</a></li>
+              <li><a href="#servicios">Nube</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-col-title">Empresa</div>
+            <ul class="footer-links">
+              <li><a href="#nosotros">Nosotros</a></li>
+              <li><a href="#planes">Planes</a></li>
+              <li><a href="#cobertura">Cobertura</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+              <li><a href="#contacto">Trabaje con nosotros</a></li>
+            </ul>
+          </div>
+          <div>
+            <div class="footer-col-title">Contacto</div>
+            <ul class="footer-links">
+              <li>
+                <a
+                  href="https://wa.me/573126805260"
+                  target="_blank"
+                  rel="noopener"
+                  >WhatsApp</a
+                >
+              </li>
+              <li>
+                <a href="mailto:contacto@vicpersolutions.com.co">Email</a>
+              </li>
+              <li><a href="tel:+573126805260">+57 312 680 5260</a></li>
+              <li><a style="cursor: default">Santa Marta, Magdalena</a></li>
+              <li><a style="cursor: default">Colombia</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-copy">
+            © 2026 VICPER SOLUTIONS S.A.S. · Todos los derechos reservados
+          </div>
+          <div class="footer-legal">
+            <a href="#">Política de Privacidad</a>
+            <a href="#">Términos de Servicio</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- WhatsApp float -->
+    <div class="wa-float" role="complementary" aria-label="Contacto rápido">
+      <div class="wa-float-label">¿Necesita soporte ahora?</div>
+      <a
+        class="wa-float-btn"
+        href="https://wa.me/573126805260?text=Hola%20VICPER%20SOLUTIONS%2C%20necesito%20soporte%20técnico"
+        target="_blank"
+        rel="noopener"
+        aria-label="Contactar por WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <script>
+      /* ── Navbar scroll state ── */
+      const navbar = document.getElementById("navbar");
+      window.addEventListener(
+        "scroll",
+        () => {
+          navbar.classList.toggle("scrolled", window.scrollY > 20);
+        },
+        { passive: true }
+      );
+
+      /* ── Mobile menu ── */
+      let menuOpen = false;
+      function toggleMenu() {
+        menuOpen = !menuOpen;
+        document
+          .getElementById("mobileMenu")
+          .classList.toggle("open", menuOpen);
+        document.getElementById("hamburger").classList.toggle("open", menuOpen);
+        document
+          .getElementById("hamburger")
+          .setAttribute("aria-expanded", menuOpen);
+        document
+          .getElementById("mobileMenu")
+          .setAttribute("aria-hidden", !menuOpen);
+        document.body.style.overflow = menuOpen ? "hidden" : "";
+      }
+      function closeMenu() {
+        menuOpen = false;
+        document.getElementById("mobileMenu").classList.remove("open");
+        document.getElementById("hamburger").classList.remove("open");
+        document
+          .getElementById("hamburger")
+          .setAttribute("aria-expanded", "false");
+        document
+          .getElementById("mobileMenu")
+          .setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      /* ── Scroll reveal ── */
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
+      );
+      document
+        .querySelectorAll("[data-reveal]")
+        .forEach((el) => revealObserver.observe(el));
+
+      /* ── Active nav highlight ── */
+      const sections = document.querySelectorAll("section[id], div[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+      window.addEventListener(
+        "scroll",
+        () => {
+          let current = "";
+          sections.forEach((s) => {
+            if (window.scrollY >= s.offsetTop - 90) current = s.id;
+          });
+          navLinks.forEach((link) => {
+            link.style.color =
+              link.getAttribute("href") === "#" + current
+                ? "var(--navy-900)"
+                : "";
+          });
+        },
+        { passive: true }
+      );
+
+      /* ── Smooth scroll ── */
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", (e) => {
+          const target = document.querySelector(anchor.getAttribute("href"));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      /* ── Quote form → WhatsApp ── */
+      function submitForm() {
+        const name = document.getElementById("f-name").value.trim();
+        const phone = document.getElementById("f-phone").value.trim();
+        const email = document.getElementById("f-email").value.trim();
+        const service = document.getElementById("f-service").value;
+        if (!name || !phone || !email || !service) {
+          alert("Por favor complete los campos obligatorios (*)");
+          return;
+        }
+        const company =
+          document.getElementById("f-company").value || "No indicada";
+        const size =
+          document.getElementById("f-size").value || "No especificado";
+        const msg =
+          document.getElementById("f-msg").value || "Sin descripción adicional";
+        const waText = encodeURIComponent(
+          "*Cotización — VICPER SOLUTIONS S.A.S.*\n\n" +
+            "\u{1F464} *Nombre:* " +
+            name +
+            "\n" +
+            "\u{1F3E2} *Empresa:* " +
+            company +
+            "\n" +
+            "\u{1F4DE} *Teléfono:* " +
+            phone +
+            "\n" +
+            "\u{1F4E7} *Email:* " +
+            email +
+            "\n" +
+            "\u{1F6E0} *Servicio:* " +
+            service +
+            "\n" +
+            "\u{1F4BC} *Tamaño:* " +
+            size +
+            "\n" +
+            "\u{1F4DD} *Descripción:* " +
+            msg
+        );
+        document.getElementById("formBody").style.display = "none";
+        document.getElementById("formSuccess").classList.add("show");
+        setTimeout(() => {
+          window.open("https://wa.me/573000000000?text=" + waText, "_blank");
+        }, 800);
+      }
+    </script>
+  </body>
+</html>
